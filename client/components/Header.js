@@ -1,11 +1,12 @@
 import React from 'react'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useContext,useEffect, useState } from 'react'
 import { FiArrowUpRight } from 'react-icons/fi'
 import { AiOutlineDown } from 'react-icons/ai'
 import { HiOutlineDotsVertical } from 'react-icons/hi'
 import a from '../assets/a.png'
 import b from '../assets/b.jpg'
+import { TransactionContext } from '../context/TransactionContext'
 
 const style = {
     wrapper: `p-4 w-screen flex justify-between items-center`,
@@ -24,6 +25,11 @@ const style = {
 
 const Header = () => {
     const [selectedNav, setSelectedNav] = useState('swap')
+    
+    const { connectWallet, currentAccount } = useContext(TransactionContext)
+
+    console.log(connectWallet,currentAccount)
+
     return (
         <div className={style.wrapper}>
         <div className={style.headerLogo}>
