@@ -80,7 +80,7 @@ const Header = () => {
 
             {currentAccount ? (
           <div className={`${style.button} ${style.buttonPadding}`}>
-            <div className={style.buttonTextContainer}>Connected 0x3...3d</div>
+            <div className={style.buttonTextContainer}>Connected 0xe56...c557</div>
           </div>
         ) : (
           <div
