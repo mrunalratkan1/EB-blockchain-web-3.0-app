@@ -31,6 +31,7 @@ const Header = () => {
     console.log(connectWallet,currentAccount)
 
     return (
+      <div>
         <div className={style.wrapper}>
         <div className={style.headerLogo}>
           <Image src={a} alt='a' height={40} width={40} />
@@ -43,7 +44,7 @@ const Header = () => {
                 selectedNav === 'swap' && style.activeNavItem
               }`}
             >
-              Swap
+              Transfer
             </div>
             <div
               onClick={() => setSelectedNav('pool')}
@@ -51,7 +52,7 @@ const Header = () => {
                 selectedNav === 'pool' && style.activeNavItem
               }`}
             >
-              Vote
+                      EB BLOCKCHAIN TRANSFER
             </div>
             <a
               href='https://info.uniswap.org/#/'
@@ -75,14 +76,24 @@ const Header = () => {
             <div className={style.buttonIconContainer}>
               <AiOutlineDown />
             </div>
-            <div
-              onClick={() => connectWallet()}
-              className={`${style.button} ${style.buttonPadding}`}
-            >
-              <div className={`${style.buttonAccent} ${style.buttonPadding}`}>
-                Connect Wallet
-              </div>
+
+
+            {currentAccount ? (
+          <div className={`${style.button} ${style.buttonPadding}`}>
+            <div className={style.buttonTextContainer}>Connected 0x3...3d</div>
+          </div>
+        ) : (
+          <div
+            onClick={() => connectWallet()}
+            className={`${style.button} ${style.buttonPadding}`}
+          >
+            <div className={`${style.buttonAccent} ${style.buttonPadding}`}>
+              Connect Wallet
             </div>
+          </div>
+        )}
+
+
           <div className={`${style.button} ${style.buttonPadding}`}>
             <div className={`${style.buttonIconContainer} mx-2`}>
               <HiOutlineDotsVertical />
@@ -91,6 +102,9 @@ const Header = () => {
         </div>
       </div>
       </div>
+      
+      </div>
+        
     )
   }
 
