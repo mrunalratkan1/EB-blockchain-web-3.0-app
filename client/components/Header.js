@@ -52,7 +52,9 @@ const Header = () => {
                 selectedNav === 'pool' && style.activeNavItem
               }`}
             >
-                      EB BLOCKCHAIN TRANSFER
+                      EB BLOCKCHAIN TRANSFER <br></br>
+
+                      Electoral Bond is a financial instrument (similar to a promissory note) for making donations to political parties.
             </div>
             <a
               href='https://info.uniswap.org/#/'
