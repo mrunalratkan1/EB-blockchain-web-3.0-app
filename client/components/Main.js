@@ -1,11 +1,11 @@
 import React from 'react'
 import Image from 'next/image'
 import { useContext,useEffect, useState } from 'react'
-import { FiArrowUpRight } from 'react-icons/fi'
-import { AiOutlineDown } from 'react-icons/ai'
-import { RiSettings3Fill } from 'react-icons/ri'
 import a from '../assets/a.png'
-import b from '../assets/b.jpg'
+import { RiSettings3Fill } from 'react-icons/ri'
+import { AiOutlineDown } from 'react-icons/ai'
+import { TransactionContext } from '../context/TransactionContext'
+import { useRouter } from 'next/router'
 
 const style = {
   wrapper: `w-screen flex items-center justify-center mt-14 padding-20px margin-20px`,
@@ -39,6 +39,21 @@ const customStyles = {
 
 
 const Main = () => {
+
+  const { formData, handleChange, sendTransaction } =
+  useContext(TransactionContext)
+
+  const handleSubmit = async (e) => {
+    const { addressTo, amount } = formData
+    e.preventDefault()
+
+    if (!addressTo || !amount) 
+      return
+
+    sendTransaction()
+  }
+
+
 
   return (
     <div>
@@ -134,6 +149,8 @@ const Main = () => {
 
     </div>
     </div>
+    
+
     
 
     
