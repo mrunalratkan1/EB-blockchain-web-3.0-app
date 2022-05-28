@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react'
+import { contractABI, contractAddress } from '../lib/constants'
+import { ethers } from 'ethers'
+//import { client } from '../lib/sanityClient'
 import { useRouter } from 'next/router'
 export const TransactionContext = React.createContext()
 
@@ -9,6 +12,18 @@ if (typeof window !== 'undefined') {
 }
 
 
+const getEthereumContract = () => {
+  const provider = new ethers.providers.Web3Provider(ethereum)
+  const signer = provider.getSigner()
+  const transactionContract = new ethers.Contract(
+    contractAddress,
+    contractABI,
+    signer,
+  )
+
+  return transactionContract
+}
+
 export const TransactionProvider = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState()
   const [isLoading, setIsLoading] = useState(false)
@@ -18,6 +33,37 @@ export const TransactionProvider = ({ children }) => {
     amount: '',
   })
 
+  useEffect(() => {
+    if (isLoading) {
+      router.push(`/?loading=${currentAccount}`)
+    } else {
+      router.push(`/`)
+    }
+  }, [isLoading])
+/*
+  useEffect(() => {
+    if (isLoading) {
+      router.push(`/?loading=${currentAccount}`)
+    } else {
+      router.push(`/`)
+    }
+  }, [isLoading])
+
+ 
+  useEffect(() => {
+    if (!currentAccount) return
+    ;(async () => {
+      const userDoc = {
+        _type: 'users',
+        _id: currentAccount,
+        userName: 'Unnamed',
+        address: currentAccount,
+      }
+
+      await client.createIfNotExists(userDoc)
+    })()
+  }, [currentAccount])
+  */
 
   useEffect(() => {
     checkIfWalletIsConnected()
@@ -154,7 +200,8 @@ export const TransactionProvider = ({ children }) => {
             sendTransaction,
             handleChange,
             setFormData,
-            isLoading,
+            formData,
+            isLoading
       }}
 
     >

@@ -25,7 +25,6 @@ const style = {
 
 const Header = () => {
     const [selectedNav, setSelectedNav] = useState('swap')
-    
     const { connectWallet, currentAccount } = useContext(TransactionContext)
     const [userName, setUserName] = useState()
 
@@ -36,7 +35,8 @@ const Header = () => {
             )
           }
     }, [currentAccount])
-
+    
+    console.log(currentAccount)
     return (
       <div>
         <div className={style.wrapper}>
@@ -102,7 +102,7 @@ const Header = () => {
           </div>
         )}
 
-
+          
           <div className={`${style.button} ${style.buttonPadding}`}>
             <div className={`${style.buttonIconContainer} mx-2`}>
               <HiOutlineDotsVertical />
