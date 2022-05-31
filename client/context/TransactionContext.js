@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { contractABI, contractAddress } from '../lib/constants'
 import { ethers } from 'ethers'
-//import { client } from '../lib/sanityClient'
+import { client } from '../lib/sanityClient'
 import { useRouter } from 'next/router'
 export const TransactionContext = React.createContext()
 
@@ -40,7 +40,7 @@ export const TransactionProvider = ({ children }) => {
       router.push(`/`)
     }
   }, [isLoading])
-/*
+
   useEffect(() => {
     if (isLoading) {
       router.push(`/?loading=${currentAccount}`)
@@ -63,7 +63,7 @@ export const TransactionProvider = ({ children }) => {
       await client.createIfNotExists(userDoc)
     })()
   }, [currentAccount])
-  */
+  
 
   useEffect(() => {
     checkIfWalletIsConnected()

@@ -4,17 +4,17 @@ import { useContext,useEffect, useState } from 'react'
 import { FiArrowUpRight } from 'react-icons/fi'
 import { AiOutlineDown } from 'react-icons/ai'
 import { HiOutlineDotsVertical } from 'react-icons/hi'
-import a from '../assets/a.png'
-import b from '../assets/b.jpg'
+import a from '../assets/ethlogo.png'
+import b from '../assets/logo.png'
 import { TransactionContext } from '../context/TransactionContext'
 
 const style = {
-    wrapper: `p-4 w-screen flex justify-between items-center`,
+    wrapper: `p-4 w-screen flex justify-between items-center bg-[#3c0466]`,
     headerLogo: `flex w-1/4 items-center justify-start`,
     nav: `flex-1 flex justify-center items-center`,
     navItemsContainer: `flex bg-[#191B1F] rounded-3xl`,
     navItem: `px-4 py-2 m-1 flex items-center text-lg font-semibold text-[0.9rem] cursor-pointer rounded-3xl`,
-    activeNavItem: `bg-[#20242A]`,
+    activeNavItem: `bg-[#20242A] flex items-center`,
     buttonsContainer: `flex w-1/4 justify-end items-center`,
     button: `flex items-center bg-[#191B1F] rounded-2xl mx-2 text-[0.9rem] font-semibold cursor-pointer`,
     buttonPadding: `p-2`,
@@ -41,7 +41,7 @@ const Header = () => {
       <div>
         <div className={style.wrapper}>
         <div className={style.headerLogo}>
-          <Image src={a} alt='a' height={40} width={40} />
+          <Image src={a} alt='a' height={150} width={150} />
         </div>
         <div className={style.nav}>
           <div className={style.navItemsContainer}>
